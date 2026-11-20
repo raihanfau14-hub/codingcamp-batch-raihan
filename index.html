@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div class="container">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙 Dark Mode</button>
+    </div>
+
+    <!-- ── Greeting ── -->
+    <section class="card greeting-card" aria-label="Greeting">
+      <div id="clock" class="time" aria-live="polite">00:00:00</div>
+      <div id="date" class="date"></div>
+      <div id="greeting-text" class="greeting-text">Good morning 👋</div>
+      <div class="name-row">
+        <input
+          id="name-input"
+          class="name-input"
+          type="text"
+          placeholder="Enter your name…"
+          maxlength="30"
+          aria-label="Your name"
+        />
+        <button id="save-name" class="btn btn-primary">Save</button>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <!-- ── Focus Timer ── -->
+      <section class="card" aria-label="Focus Timer">
+        <h2>⏱ Focus Timer</h2>
+
+        <div class="timer-display">
+          <div id="timer-display" class="timer-time">25:00</div>
+          <div class="timer-label">Focus session</div>
+        </div>
+
+        <div class="timer-progress-bar" aria-hidden="true">
+          <div id="timer-progress" class="timer-progress-fill"></div>
+        </div>
+
+        <div class="timer-controls">
+          <button id="btn-start" class="btn btn-success">▶ Start</button>
+          <button id="btn-stop"  class="btn btn-ghost" disabled>⏸ Stop</button>
+          <button id="btn-reset" class="btn btn-ghost">↺ Reset</button>
+        </div>
+
+        <!-- Challenge: Change Pomodoro Time -->
+        <div class="timer-custom">
+          <label for="pomodoro-minutes">Set minutes:</label>
+          <input
+            id="pomodoro-minutes"
+            type="number"
+            min="1"
+            max="120"
+            value="25"
+            aria-label="Pomodoro duration in minutes"
+          />
+          <button id="btn-set-pomodoro" class="btn btn-primary btn-sm">Set</button>
+        </div>
+      </section>
+
+      <!-- ── To-Do List ── -->
+      <section class="card" aria-label="To-Do List">
+        <h2>✅ To-Do List</h2>
+
+        <div class="todo-input-row">
+          <input
+            id="todo-input"
+            type="text"
+            placeholder="Add a new task…"
+            maxlength="120"
+            aria-label="New task"
+          />
+          <button id="btn-add-task" class="btn btn-primary">Add</button>
+        </div>
+        <!-- Challenge: Prevent Duplicate Tasks -->
+        <span id="duplicate-warning" class="duplicate-warning" aria-live="polite">
+          ⚠️ That task already exists!
+        </span>
+
+        <!-- Challenge: Sort Tasks -->
+        <div class="todo-sort-row">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select" class="sort-select" aria-label="Sort tasks">
+            <option value="default">Default</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="pending">Pending First</option>
+            <option value="done">Done First</option>
+          </select>
+        </div>
+
+        <ul id="todo-list" class="todo-list" aria-label="Tasks">
+          <li class="todo-empty">No tasks yet. Add one above!</li>
+        </ul>
+      </section>
+
+      <!-- ── Quick Links ── -->
+      <section class="card" style="grid-column: 1 / -1;" aria-label="Quick Links">
+        <h2>🔗 Quick Links</h2>
+
+        <div id="links-grid" class="links-grid"></div>
+
+        <div class="link-add-row">
+          <div class="input-group">
+            <input id="link-label" type="text"  placeholder="Name (e.g. Google)"  maxlength="30" aria-label="Link name" />
+            <input id="link-url"   type="url"   placeholder="URL (e.g. https://google.com)" maxlength="200" aria-label="Link URL" />
+            <input id="link-icon"  type="text"  placeholder="Emoji icon (optional)" maxlength="4" aria-label="Link icon emoji" />
+            <button id="btn-add-link" class="btn btn-primary">Add Link</button>
+          </div>
+        </div>
+
+        <div id="links-manage" style="margin-top: 10px; display: flex; flex-direction: column; gap: 4px;"></div>
+      </section>
+
+    </div><!-- /.grid -->
+  </div><!-- /.container -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>
